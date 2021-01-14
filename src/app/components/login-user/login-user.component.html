@@ -1,0 +1,33 @@
+<section class="grey-text w-responsive mx-auto p-5">
+
+  <form #loginForm="ngForm">
+
+    <h1 class="h4 mb-4 text-center font-weight-bold">Login</h1>
+    <div class="form-group">
+      <label for="email">Usuário</label>
+      <input type="text" class="form-control" id="email" placeholder="Nome do Usuário"
+        required
+        [(ngModel)]="user.email" name="email" #email="ngModel"/>
+
+      <div [hidden]="email.valid || email.prestine" class="alert alert-danger">
+        Favor digitar o nome de usuário
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Senha</label>
+      <input type="text" class="form-control" id="password" placeholder="Senha"
+        required
+        [(ngModel)]="user.password" name="password" #password="ngModel"/>
+      <div [hidden]="password.valid || password.prestine" class="alert alert-danger">
+        Favor digitar a Senha
+      </div>
+    </div>
+    <button #ngIf="!=submitted" class="btn btn-dark btn-block" (click)="login()" [disabled]="!formLogin.form,valid">Entrar</button>
+    <button #ngIf="submitted" class="btn btn-dark btn-block" type="button">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      Carregando...
+    </button>
+  </form>
+
+</section>
